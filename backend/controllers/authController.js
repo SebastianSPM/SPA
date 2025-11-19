@@ -4,7 +4,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body
 
     try {
-        const { data: users } = await axios.get("http://localhost:3000/users")
+        const { data: users } = await axios.get("http://localhost:3000/usuarios")
 
         const user = users.find(
             u => u.email === email && u.password === password
@@ -20,6 +20,7 @@ export const login = async (req, res) => {
             message: "Login exitoso",
             user: {
                 id: user.id,
+                email: user.email,
                 name: user.name,
                 role: user.role
             }
